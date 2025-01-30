@@ -60,7 +60,7 @@
         // moves the Box to a new position on the screen along the X-Axis
         function moveBoxTo(newPositionX, newPositionY) {
           box.css("left", newPositionX);
-          box.ss("top", newPositionY);
+          box.css("top", newPositionY);
         }
 
         // changes the text displayed on the Box
@@ -79,20 +79,28 @@
         var points = 0;
         var speed = 10;
         var speedY = 10;
+        var boardHeight = jQuery(window).height();
         /* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
         function update() {
+          positionY = positionY + speedY;
           positionX = positionX + speed;
-          moveBoxTo(positionX);
+          moveBoxTo(positionX, positionY);
 
           if (positionX > boardWidth - 73) {
             speed = -speed;
           }
           if (positionX < 0) {
             speed = -speed;
+          }
+          if (positionY > boardHeight - 73) {
+            speedY = -speedY;
+          }
+          if (positionY < 0) {
+            speedY = -speedY;
           }
         }
 
@@ -110,8 +118,14 @@
           } else if (speed < 0) {
             speed -= 3;
           }
+          if (speedY > 0) {
+            speedY += 3;
+          } else if (speedY < 0) {
+            speedY -= 3;
+          }
           // Reset the box to the left
           positionX = 0;
+          positionY = 0;
           changeBoxText(points);
         }
       })();
