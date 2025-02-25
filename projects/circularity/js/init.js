@@ -87,8 +87,8 @@ var init = function (window) {
       // creating a for loop array
 
       for (var i = 0; i < circles.length; i++) {
-        physikz.updatePosition(circles[1]);
-        game.checkCirclePosition(circles[1]);
+        physikz.updatePosition(circles[i]);
+        game.checkCirclePosition(circles[i]);
       }
     }
 
