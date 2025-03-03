@@ -25,8 +25,11 @@ var init = function (window) {
     // created function called drawcircle that draws a circle
 
     function drawCircle() {
+      // circle is telling rather circle = draw is true or not
       circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+      // seeing if circle fits on the canvas
       physikz.addRandomVelocity(circle, canvas, 5, 5);
+      // veiwing circles
       view.addChild(circle);
       circles.push(circle);
     }
@@ -118,7 +121,7 @@ var init = function (window) {
 
       // using an if statment to see if circle will go off or stay on the page
 
-      if (circle.y > canvas.width) {
+      if (circle.y > canvas.length) {
         circle.y = 0;
       }
       // checking if it come sback at the top
