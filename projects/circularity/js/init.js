@@ -121,7 +121,7 @@ var init = function (window) {
 
       // using an if statment to see if circle will go off or stay on the page
 
-      if (circle.y > canvas.length) {
+      if (circle.y > canvas.height) {
         circle.y = 0;
       }
       // checking if it come sback at the top
