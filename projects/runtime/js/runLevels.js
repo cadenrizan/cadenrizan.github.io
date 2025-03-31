@@ -28,7 +28,7 @@ var runLevels = function (window) {
       obstacleHitZone.x = x; // sets the x cordinate of the obstacle
       obstacleHitZone.y = y; // sets the y cordinate of the obstacle
       game.addGameItem(obstacleHitZone); // adds the obstacle hitzone to the game
-      var obstacleImage = draw.bitmap("image"); // draw the image bitmap
+      var obstacleImage = draw.bitmap(image); // draw the image bitmap
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle
       obstacleImage.x = -25; // position the image on the hitzone's value by moving it left 25 pixels
       obstacleImage.y = -25; // position of the image on the hitzones y value by moving it up 25 pixels
@@ -113,25 +113,26 @@ var runLevels = function (window) {
 
         if (element.type === "sawblade") { // checks the type key:value of the game item onjects to determine how it creates
          
-        createobstacles(element.x, element.y,  element.hitSize,  element.damage, element.image);{ // if the condition is true it will call the relavant function
+        createobstacles(element.x, element.y,  element.hitSize,  element.damage, element.image); // if the condition is true it will call the relavant function
          
         }
+        if (element.type === "enemy") {  
+          createEnemy(element.x, element.y, element.speed, element.health);
+           
+         }
+   
+         if (element.type === "reward") {
+         createReward(element.x, element.y, element.speed, element.health);
+   
+         }
+   
+         if (element.type === "level") {
+         createLevel(element.x, element.y, element.speed);
+   
+         }
       }
 
-      if (element.type === "enemy") {  
-       createEnemy(element.x, element.y, element.speed, element.health);
-        
-      }
-
-      if (element.type === "reward") {
-      createEnemy(element.x, lement.y, element.speed, element.health);
-
-      }
-
-      if (element.type === "level") {
-      createEnemy(element.x, element.y, element.speed);
-
-      }
+       
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE

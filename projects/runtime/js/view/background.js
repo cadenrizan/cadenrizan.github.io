@@ -98,7 +98,8 @@ var background = function (window) {
       for (var i = 0; i < buildings.length; i++) {
         var building = buildings[i]; // the individual index of the building stored in an array
         building.x -= 1; // subtracts 1 from building x pos; animiate to left
-        if (building.x < 0) { // checks if the x pos of the building is less than -100
+        if (building.x < 0) {
+          // checks if the x pos of the building is less than -100
           building.x = canvasWidth; // if true, reset building x pos right of the canvas
         }
       }
