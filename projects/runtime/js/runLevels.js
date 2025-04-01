@@ -18,7 +18,7 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-    function createobstacles(x, y, hitSize, damage, image) {
+    function createobstacles(x, y, hitSize, damage, image, xscale, yscale) {
       var hitZoneSize = hitSize; //define the size of the hitzone and assign to a variable
       var damageFromObstacle = damage; // defines the amount of damage obstacle causes and assigns to variable
       var obstacleHitZone = game.createObstacle(
@@ -32,6 +32,8 @@ var runLevels = function (window) {
       obstacleHitZone.addChild(obstacleImage); // attach the image to the obstacle
       obstacleImage.x = -25; // position the image on the hitzone's value by moving it left 25 pixels
       obstacleImage.y = -25; // position of the image on the hitzones y value by moving it up 25 pixels
+      obstacleImage.scaleX = xscale;
+      obstacleImage.scaleY = yscale;
       obstacleHitZone.rotationalvolicity = 10;
     }
 
@@ -111,11 +113,12 @@ var runLevels = function (window) {
       for (var i = 0; i < levelObjects.length; i++) {
         var element = levelObjects[i];
 
-        if (element.type === "sawblade") { // checks the type key:value of the game item onjects to determine how it creates
+        if (element.type === "sawblade" || element.type === "nail") { // checks the type key:value of the game item onjects to determine how it creates
          
-        createobstacles(element.x, element.y,  element.hitSize,  element.damage, element.image); // if the condition is true it will call the relavant function
+        createobstacles(element.x, element.y,  element.hitSize,  element.damage, element.image, element.xscale, element.yscale); // if the condition is true it will call the relavant function
          
         }
+       
         if (element.type === "enemy") {  
           createEnemy(element.x, element.y, element.speed, element.health);
            
@@ -131,7 +134,7 @@ var runLevels = function (window) {
    
          }
       }
-
+      
        
 
       //////////////////////////////////////////////
