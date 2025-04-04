@@ -59,9 +59,11 @@ var runLevels = function (window) {
       };
     }
 
-    function createReward(x, y, speed, health) {
+    function createReward(x, y, speed, health, image) {
+      obstacleImage.scaleX = xscale;
+      obstacleImage.scaleY = yscale;
       var reward = game.createGameItem("reward", 25); // creates enemy game item and adds it to game
-      var blueSquare = draw.rect(50, 50, "blue"); // creates a red square and stores it in the variable red square
+      var blueSquare = draw.bitmap(image); // creates a red square and stores it in the variable red square
       blueSquare.x = -25; // offsets the image from the hitzone by -25 pixels
       blueSquare.y = -25; // offsets the image from the hitzone by -25 pixels
       reward.addChild(blueSquare); // add the red square to our child as a enemy variable
@@ -80,7 +82,7 @@ var runLevels = function (window) {
         //enemy.fadeOut();
       };
     }
-    createReward(500, groundY - 100, 3, 40);
+   
 
     function createLevel(x, y, speed) {
       var level = game.createGameItem("level", 25); // creates enemy game item and adds it to game
@@ -113,7 +115,7 @@ var runLevels = function (window) {
       for (var i = 0; i < levelObjects.length; i++) {
         var element = levelObjects[i];
 
-        if (element.type === "sawblade" || element.type === "nail") { // checks the type key:value of the game item onjects to determine how it creates
+        if (element.type === "sawblade" || element.type === "nail" || element.type === "cone" || element.type === "dragon" ) { // checks the type key:value of the game item onjects to determine how it creates
          
         createobstacles(element.x, element.y,  element.hitSize,  element.damage, element.image, element.xscale, element.yscale); // if the condition is true it will call the relavant function
          
@@ -124,8 +126,8 @@ var runLevels = function (window) {
            
          }
    
-         if (element.type === "reward") {
-         createReward(element.x, element.y, element.speed, element.health);
+         if (element.type === "reward1" || element.type === "reward2") {
+         createReward(element.x, element.y, element.speed, element.health, element.image);
    
          }
    
